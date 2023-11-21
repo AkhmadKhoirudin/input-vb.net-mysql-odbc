@@ -1,0 +1,25 @@
+sub simpan()
+
+        If TextBox1.Text = "" Or TextBox2.Text = "" Or ComboBox1.Text = "" Or
+                TextBox3.Text = "" Or TextBox4.Text = "" Or TextBox5.Text = "" Or PictureBox1.ToString = "" Then
+            MsgBox("Pastikan semua data diisi dengan benar")
+        ElseIf TextBox1.Text.Length < 4 Or TextBox2.Text.Length < 4 Or TextBox5.Text.Length < 4 Then
+            MsgBox("Pastikan Username,Password dan no.telp semua data diisi dengan benar dan karakter lebih  4")
+            Else
+                Try
+
+                konekregis()
+                    Dim input As String = "insert into tb_pegawai (`id`, `username`, `password`, `status`, `nama`, `jkl`, `tanggal_lahir`, `agama`, `alamat`, `no`, `file`) 
+                                      value('" & (bbbbb.Text & TextBox3.Text) & "','" & TextBox1.Text & "','" & TextBox2.Text & "','" & ComboBox1.Text & "','" & TextBox4.Text & "','null','nulll','null','" & TextBox5.Text & "','" & TextBox6.Text & "','" & PictureBox1.ToString & "')"
+                    cmd = New OdbcCommand(input, conn)
+                    cmd.ExecuteNonQuery()
+                    MsgBox("data tersimpan")
+                    Me.Close()
+                Catch ex As Exception
+
+                    MsgBox("gagal tersimpan", MsgBoxStyle.Information, "status")
+
+                End Try
+
+            End If
+end 
